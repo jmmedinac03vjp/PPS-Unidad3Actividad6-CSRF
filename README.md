@@ -259,8 +259,8 @@ Explicación de las correcciones:
 
 - Exige que las solicitudes sean AJAX (X-Requested-With: XMLHttpRequest).
 
-< Si la mitigación está funcionando, la solicitud POST debería ser rechazada y deberías ver un mensaje como "CSRF
-detectado. Acción bloqueada." en la pantalla.
+> Si la mitigación está funcionando, la solicitud POST debería ser rechazada y deberías ver un mensaje como "CSRF detectado. Acción bloqueada." en la pantalla.
+> Para hacer uso ahora de transfer.php tendríamos que hacer una petición más compleja, no es suficiente con introducir la ruta en el navegador.
 
 
 ---
