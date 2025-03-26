@@ -194,7 +194,9 @@ Probamos a ejecutar de nuevo csrf_attack2.html:
 ---
 Esta configuración impide que las cookies de sesión sean enviadas en solicitudes CSRF.
 Editar la configuración de sesión en transfer.php:
+
 `session_set_cookie_params(['samesite' => 'Strict']);`
+
 `session_start();`
 Esto evitará que un atacante pueda robar la sesión en peticiones automáticas.
 
