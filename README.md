@@ -20,10 +20,12 @@ Ejemplo real:
 • Cuando el usuario hace clic en el enlace, se realiza una transferencia sin su consentimiento.
 
 ## ACTIVIDADES A REALIZAR
+> Lee detenidamente la sección de Inyección CSRF de la página de PortWigger <https://portswigger.net/web-security/csrf>
+
 > Lee el siguiente [documento sobre Explotación y Mitigación de ataques de Inyección CSRF](./files/ExplotacionYMitigacionCSRF.pdf) de Raúl Fuentes. Nos va a seguir de guía para aprender a explotar y mitigar ataques de inyección Cross-Site Request Forgery (CSRF)>
-> 
+ 
 > También y como marco de referencia, tienes [ la sección de correspondiente de ataque XSS reglejado de la **Proyecto Web Security Testing Guide** (WSTG) del proyecto **OWASP**.]<https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/06-Session_Management_Testing/05-Testing_for_Cross_Site_Request_Forgery>
->
+
 
 
 Vamos realizando operaciones:
