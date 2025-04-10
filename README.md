@@ -54,12 +54,15 @@ El código no verifica el origen de la solicitud y cualquier página externa pue
 ---
 El atacante crea un archivo malicioso (csrf_attack.html):
 
+~~~
 <!DOCTYPE html>
 <html>
 <body>
 	<img src="http://localhost/transfer.php?amount=1000">
 </body>
 </html>
+~~
+
 Este archivo no está ubicado en la web del banco sino que está ubicada en una web del atacante o alguna utilizada por él. 
 Fíjate que el enlace a este archivo http puede haberse hecho llegar a través de cualquier medio: email, o haber sido falsificada.
 
