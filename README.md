@@ -61,7 +61,7 @@ El atacante crea un archivo malicioso (csrf_attack.html):
 	<img src="http://localhost/transfer.php?amount=1000">
 </body>
 </html>
-~~
+~~~
 
 Este archivo no está ubicado en la web del banco sino que está ubicada en una web del atacante o alguna utilizada por él. 
 Fíjate que el enlace a este archivo http puede haberse hecho llegar a través de cualquier medio: email, o haber sido falsificada.
