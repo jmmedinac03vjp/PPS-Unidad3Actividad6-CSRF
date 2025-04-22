@@ -11,15 +11,22 @@ Tenemos como objetivo:
 
 ## ¿Qué es CSRF?
 Falsificación de Solicitud en el Sitio Cruzado (CSRF) es un ataque que obliga a un usuario final a ejecutar acciones no intencionadas en una aplicación web en la que están autenticados actualmente. Con un poco de ayuda de ingeniería social (como enviar un enlace por correo electrónico o chat), un atacante puede obligar a los usuarios de una aplicación web a ejecutar acciones de los atacantes que elijan. 
+
 Un exploit CSRF exitoso puede comprometer los datos y la operación del usuario final cuando se dirige a un usuario normal. 
+
 Si el usuario final objetivo es la cuenta de administrador, un ataque CSRF puede comprometer toda la aplicación web.
 
 Ejemplo real:
+
 • Un usuario está autenticado en su banco online.
+
 • El atacante envía un enlace malicioso en un correo o página.
+
 • Cuando el usuario hace clic en el enlace, se realiza una transferencia sin su consentimiento.
 
 ## ACTIVIDADES A REALIZAR
+---
+
 > Lee detenidamente la sección de Inyección CSRF de la página de PortWigger <https://portswigger.net/web-security/csrf>
 
 > Lee el siguiente [documento sobre Explotación y Mitigación de ataques de Inyección CSRF](./files/ExplotacionYMitigacionCSRF.pdf) de Raúl Fuentes. Nos va a seguir de guía para aprender a explotar y mitigar ataques de inyección Cross-Site Request Forgery (CSRF)>
@@ -32,7 +39,9 @@ Vamos realizando operaciones:
 
 ## Código vulnerable
 ---
+
 Crear el archivo vulnerable: transfer1.php. Este archivo php está ubicado en la entidad bancaria online y nos permite realizar una transferencia.
+
 ~~~
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -85,13 +94,12 @@ docker exec lamp-php83 /bin/bash -c "tail -5 /var/log/apache2/other_vhosts_acces
 ![](images/csrf3.png)
 
 Confirmación: El ataque CSRF se ejecutó correctamente
-- El log indica que el navegador envió una solicitud GET a transfer.php?amount=1000 desde
-csrf_attack.html.
-- El servidor respondió con 200 OK, lo que significa que la transacción se realizó sin que el usuario lo
-notara.
 
-Esto confirma que transfer.php es vulnerable a CSRF porque NO verifica el origen de la solicitud ni usa
-protección con tokens.
+- El log indica que el navegador envió una solicitud GET a transfer.php?amount=1000 desden csrf_attack.html.
+
+- El servidor respondió con 200 OK, lo que significa que la transacción se realizó sin que el usuario lo notara.
+
+Esto confirma que transfer.php es vulnerable a CSRF porque NO verifica el origen de la solicitud ni usa protección con tokens.
 
 Una variante es que podemos insertar un formulario automático en una página legítima, con una estética muy parecida al diseño original, para engañar a la víctima.
 
@@ -113,13 +121,6 @@ El usuario al realizar una transferencia, no se dá cuenta que en realidad ha re
 
 ![](images/csrf4.png)
 
-Confirmación: El ataque CSRF automático funcionó
-- El log indica que el navegador envió una solicitud POST a transfer.php desde csrf_attack2.html.
-- El servidor respondió con 200 OK, lo que significa que la transacción se ejecutó sin que el usuario lo
-notara.
-
-Esto confirma que transfer.php sigue siendo vulnerable a CSRF en solicitudes automáticas porque NO está
-validando un token CSRF en la petición POST.
 
 ### Mitigaciones
 ---
